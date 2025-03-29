@@ -208,7 +208,7 @@ Dispositivo 4 não pode ser ligado. Energia insuficiente.
 
 Dispositivo 5 não pode ser ligado. Energia insuficiente.
 
-Resposta: A resposta correta é a letra B. Pois, 
+Resposta: A resposta correta é a letra B. Pois, é a única resposta que condiz com a lógica do código.
 ______
 
 **5)** Qual é a principal função do método update() em um jogo desenvolvido com Phaser.js?
@@ -223,7 +223,7 @@ C) O método update() renderiza todos os sprites na tela e garante que a física
 
 D) O método update() é chamado apenas uma vez após a criação da cena, sendo utilizado para configurar variáveis iniciais do jogo.
 
-Resposta: A resposta correta é letra B, pois o método update() é chamado continuamente a cada quadro (frame) do jogo, sendo usado para atualizar a lógica, movimentação e interações dos objetos na cena.
+Resposta: A resposta correta é letra B, pois é a única que condiz com o uso do update no phaser.
 ______
 
 **6)** Qual é o principal objetivo do módulo Matter.js Physics em Phaser.js?
@@ -238,6 +238,7 @@ C) Renderizar gráficos otimizados para jogos 2D e garantir uma taxa de quadros 
 
 D) Criar animações automáticas para sprites e objetos interativos sem necessidade de programação de movimentação.
 
+Resposta: A resposta é letra A, pois Matter.js é uma biblioteca de física 2D que integra o motor de física ao Phaser.js, permitindo simular comportamentos físicos realistas, como colisões, gravidade, forças, e interações entre objetos rígidos.
 ______
 
 # Questões dissertativas
@@ -251,8 +252,26 @@ Pedidos abaixo de R$50,00 → "Frete não disponível!"
 Pedidos entre R$50,00 e R$199,99 (inclusive) → "Frete com custo adicional!"
 
 Pedidos de R$200,00 ou mais → "Frete grátis!"
+
 ```
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
+
+Resposta: 
+
+Início
+    // Solicita o valor total da compra ao usuário
+    Escreva "Digite o valor total da compra: "
+    Leia valorCompra
+
+    // Verifica a faixa de preço e classifica o frete
+    Se valorCompra < 50 então
+        Escreva "Frete não disponível!"
+    Senão Se valorCompra >= 50 e valorCompra <= 199.99 então
+        Escreva "Frete com custo adicional!"
+    Senão
+        Escreva "Frete grátis!"
+    Fim Se
+Fim
 ______
 
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
@@ -270,6 +289,61 @@ Método CalcularConsumo():
 ```
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
+
+// Classe base Veiculo
+Classe Veiculo:
+    Atributos:
+        modelo
+        ano
+
+    Método Construtor(modelo, ano):
+        this.modelo = modelo
+        this.ano = ano
+
+    Método CalcularConsumo():
+        Escreva "Método CalcularConsumo deve ser sobrescrito pelas subclasses!"
+
+// Classe derivada Carro, que herda de Veiculo
+Classe Carro herda de Veiculo:
+    Atributos:
+        quilometragem
+        eficiencia
+
+    Método Construtor(modelo, ano, quilometragem, eficiencia):
+        Chama o construtor da classe Veiculo(modelo, ano)
+        this.quilometragem = quilometragem
+        this.eficiencia = eficiencia
+
+    Método CalcularConsumo():
+        consumo = this.quilometragem / this.eficiencia
+        Retorne consumo
+
+// Classe derivada Moto, que herda de Veiculo
+Classe Moto herda de Veiculo:
+    Atributos:
+        quilometragem
+        eficiencia
+
+    Método Construtor(modelo, ano, quilometragem, eficiencia):
+        Chama o construtor da classe Veiculo(modelo, ano)
+        this.quilometragem = quilometragem
+        this.eficiencia = eficiencia
+
+    Método CalcularConsumo():
+        consumo = this.quilometragem / this.eficiencia
+        Retorne consumo
+
+// Exemplo de uso das classes
+Início
+    // Criando um carro
+    carro = Novo Carro("Fusca", 1985, 600, 10)  // 600 km com 10 km/litro de eficiência
+    Escreva "Consumo do carro: ", carro.CalcularConsumo()
+
+    // Criando uma moto
+    moto = Nova Moto("Honda CG", 2020, 450, 25)  // 450 km com 25 km/litro de eficiência
+    Escreva "Consumo da moto: ", moto.CalcularConsumo()
+Fim
+
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
@@ -281,13 +355,51 @@ Implemente a lógica dessa simulação em pseudocódigo, considerando a seguinte
 Considere a fórumla de atualização velocidade:
 ```
     velocidade = velocidadeInicial - desaceleracao * tempo
-```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
+
+// Definir parâmetros de entrada
+velocidadeInicial = 1500 // Velocidade inicial de entrada na atmosfera (em km/h)
+velocidadeSegura = 10 // Velocidade segura para o pouso (em km/h)
+desaceleracao = 50 // Taxa de desaceleração causada pelo atrito atmosférico e retrofoguetes (em km/h²)
+tempoMaximo = 30 // Tempo máximo de descida (em horas)
+desaceleracaoMinima = 5 // Desaceleração mínima para evitar instabilidade (em km/h²)
+
+// Inicializar variáveis
+tempo = 0
+velocidadeAtual = velocidadeInicial
+
+// Loop para simular a redução da velocidade
+Enquanto velocidadeAtual > velocidadeSegura E tempo < tempoMaximo:
+    // Atualiza a velocidade da sonda a cada unidade de tempo
+    velocidadeAtual = velocidadeInicial - desaceleracao * tempo
+    
+    // Verificar se a desaceleração foi além do limite mínimo
+    Se desaceleracao < desaceleracaoMinima:
+        Escreva "Desaceleração mínima atingida. Ajuste necessário."
+        Pare
+
+    // Incrementa o tempo de descida
+    tempo = tempo + 1 // Incrementa o tempo em uma unidade (ex: horas)
+
+    // Se ultrapassou o tempo máximo, interrompe a simulação
+    Se tempo >= tempoMaximo:
+        Escreva "Tempo máximo de descida alcançado. Pouso instável possível!"
+        Pare
+
+// Verifica se a velocidade segura foi atingida dentro dos limites
+Se velocidadeAtual <= velocidadeSegura:
+    Escreva "Sonda atingiu a velocidade segura para o pouso em ", tempo, " horas."
+
+Fim
+
+```
 ______
 
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
 
 A seguir, é fornecida a implementação da função SomarMatrizesInvestimento(matrizA, matrizB), que soma os valores de duas matrizes de investimento. Sua tarefa é implementar uma função semelhante, porém que realize a multiplicação das matrizes de investimento, determinando como os investimentos afetam os resultados ao longo do tempo.
+
+
 
 ```
 Função SomarMatrizesInvestimento(matrizA, matrizB):  
@@ -313,5 +425,34 @@ investimentosAno2 <- [[1200, 1800], [1300, 2700]]
 totalInvestimentos <- SomarMatrizesInvestimento(investimentosAno1, investimentosAno2)  
 Escrever("Total de investimentos acumulados:")  
 ImprimirMatriz(totalInvestimentos)  
-```
+
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+inicio
+    funcao MultiplicarMatrizesInvestimento(matrizA, matrizB):  
+        # Verifica se as matrizes podem ser multiplicadas (colunas de A == linhas de B)  
+        se tamanho(matrizA[0]) ≠ tamanho(matrizB) entao:  
+            retorna "As matrizes não podem ser multiplicadas. O número de colunas de A deve ser igual ao número de linhas de B."  
+        senao:  
+            linhasA <- tamanho(matrizA)  
+            colunasA <- tamanho(matrizA[0])  
+            colunasB <- tamanho(matrizB[0])  
+            matrizResultado <- novaMatriz(linhasA, colunasB)  
+
+            # Loop para multiplicar as matrizes  
+            para i de 0 até linhasA - 1 faca:  
+                para j de 0 até colunasB - 1 faca:  
+                    matrizResultado[i][j] <- 0  
+                    para k de 0 até colunasA - 1 faca:  
+                        matrizResultado[i][j] <- matrizResultado[i][j] + (matrizA[i][k] * matrizB[k][j])  
+
+            retorna matrizResultado  
+
+    # Exemplo de uso da função  
+    investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
+    fatoresCrescimento <- [[1.1, 0.9], [0.8, 1.2]]  
+
+    impactoFinanceiro <- MultiplicarMatrizesInvestimento(investimentosAno1, fatoresCrescimento)  
+    Escrever("Impacto financeiro dos investimentos:")  
+    ImprimirMatriz(impactoFinanceiro)  
+fim
